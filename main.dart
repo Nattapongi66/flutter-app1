@@ -1,65 +1,69 @@
 import 'package:flutter/material.dart'; // Import ไลบรารี Material ของ Flutter
- 
+
 void main() {
-  // จุดเริ่มต้นของแอป Flutter
-  runApp(const MyApp()); // บอก Flutter ว่าวิดเจ็ตใดคือรากฐานของแอป
+  runApp(const MyApp()); // จุดเริ่มต้นของแอป
 }
- 
-// MyApp โดยทั่วไปคือวิดเจ็ตรากฐานของแอปพลิเคชันของคุณ
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); // Constructor
- 
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // เมธอด build() ส่งคืนโครงสร้างต้นไม้วิดเจ็ตสำหรับวิดเจ็ตนี้
     return MaterialApp(
+      title: 'My Awesome App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
-    useMaterial3: true, // ใช้ Material Design เวอร์ชันล่าสุด
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-        title: 'Flutter Demo',
-        home: const MyHomePage()
+      home: const MyHomePage(), // หน้าหลัก
     );
   }
 }
- 
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // ให้โครงสร้างแอปพื้นฐาน
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('Chapter 3 Lab'),
-        backgroundColor: Colors.teal, // ปรับแต่งสี AppBar
+        title: const Text('Constant Title'),
       ),
       body: Center(
-        child: Container( // กล่อง
-        padding: const EdgeInsets.all(50.0),
-          width: 300.0,
-          height: 200.0,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 211, 160, 9),
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          ),
-          child: const Text('Inside container',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            )
+        child: SizedBox(
+          width: 500.0,
+          height: 100.0,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.horizontal(
+                left: Radius.circular(10),
+                right: Radius.circular(10),
+              ),
+            ),
+            child: Center(
+              child: Image.network(
+                'https://as1.ftcdn.net/v2/jpg/05/65/58/08/1000_F_565580820_T5imrR0CfzH7gIWOHfIgD3SCK45jsJ5m.jpg',
+                width: 100,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // การกระทำที่จะทำเมื่อกดปุ่ม
           print('FAB Pressed!');
         },
-        child: const Icon(Icons.add), // ไอคอนสำหรับปุ่ม
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
+
+
+
+
  
